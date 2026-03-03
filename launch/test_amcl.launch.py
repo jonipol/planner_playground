@@ -65,16 +65,16 @@ def generate_launch_description():
                 ],
                 output="screen",
             ),
-            Node(
-                package="rviz2",
-                executable="rviz2",
-                arguments=[
-                    "-d",
-                    [get_package_share_directory("planner_playground"), "/config/", "nav.rviz"],
-                ],
-                parameters=[{"use_sim_time": use_sim_time}],
-                output="screen",
-            ),
+            # Node(
+            #     package="rviz2",
+            #     executable="rviz2",
+            #     arguments=[
+            #         "-d",
+            #         [get_package_share_directory("planner_playground"), "/config/", "nav.rviz"],
+            #     ],
+            #     parameters=[{"use_sim_time": use_sim_time}],
+            #     output="screen",
+            # ),
         ]
     )
 

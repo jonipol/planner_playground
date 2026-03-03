@@ -20,7 +20,10 @@ def generate_launch_description():
         "log_level", default_value="info", description="log level"
     )
 
-    lifecycle_nodes = ["smoother_server", "planner_server"]
+    lifecycle_nodes = [
+        # "smoother_server",
+        "planner_server"
+    ]
 
     load_nodes = GroupAction(
         actions=[
@@ -61,19 +64,19 @@ def generate_launch_description():
                 ],
                 output="screen",
             ),
-            Node(
-                package="nav2_smoother",
-                executable="smoother_server",
-                name="smoother_server",
-                output="screen",
-                respawn=False,
-                respawn_delay=2.0,
-                parameters=[
-                    get_package_share_directory("planner_playground")
-                    + "/config/smoother_server.yaml"
-                ],
-                arguments=["--ros-args", "--log-level", log_level],
-            ),
+            # Node(
+            #     package="nav2_smoother",
+            #     executable="smoother_server",
+            #     name="smoother_server",
+            #     output="screen",
+            #     respawn=False,
+            #     respawn_delay=2.0,
+            #     parameters=[
+            #         get_package_share_directory("planner_playground")
+            #         + "/config/smoother_server.yaml"
+            #     ],
+            #     arguments=["--ros-args", "--log-level", log_level],
+            # ),
             Node(
                 package="nav2_planner",
                 executable="planner_server",
@@ -122,16 +125,16 @@ def generate_launch_description():
                 output="screen",
                 arguments=["--ros-args", "--log-level", log_level],
             ),
-            Node(
-                package="rviz2",
-                executable="rviz2",
-                arguments=[
-                    "-d",
-                    [get_package_share_directory("planner_playground"), "/config/", "nav.rviz"],
-                ],
-                parameters=[{"use_sim_time": use_sim_time}],
-                output="screen",
-            ),
+            # Node(
+            #     package="rviz2",
+            #     executable="rviz2",
+            #     arguments=[
+            #         "-d",
+            #         [get_package_share_directory("planner_playground"), "/config/", "nav.rviz"],
+            #     ],
+            #     parameters=[{"use_sim_time": use_sim_time}],
+            #     output="screen",
+            # ),
         ]
     )
 

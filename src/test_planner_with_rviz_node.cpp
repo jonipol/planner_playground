@@ -39,6 +39,26 @@ private:
       start_filled = true;
     } else {
       goal.goal = pose_from_rviz;
+      RCLCPP_INFO(get_logger(), "Sending goal from: (%.2f, %.2f) [%.2f, %.2f, %.2f, %.2f] to (%.2f, %.2f) [%.2f, %.2f, %.2f, %.2f]",
+        goal.start.pose.position.x, goal.start.pose.position.y,
+        goal.start.pose.orientation.x, goal.start.pose.orientation.y, goal.start.pose.orientation.z, goal.start.pose.orientation.w,
+        goal.goal.pose.position.x, goal.goal.pose.position.y,
+        goal.goal.pose.orientation.x, goal.goal.pose.orientation.y, goal.goal.pose.orientation.z, goal.goal.pose.orientation.w);
+
+      RCLCPP_INFO(get_logger(), "ros2 action send_goal /compute_path_to_pose nav2_msgs/action/ComputePathToPose \"{goal: {header: {frame_id: map}, pose: {position: {x: %.2f, y: %.2f, z: %.2f}, orientation: {x: %.2f, y: %.2f, z: %.2f, w: %.2f}}}, start: {header: {frame_id: map}, pose: {position: {x: %.2f, y: %.2f, z: %.2f}, orientation: {x: %.2f, y: %.2f, z: %.2f, w: %.2f}}}, use_start: true}\"",
+        goal.goal.pose.position.x, goal.goal.pose.position.y, goal.goal.pose.position.z,
+        goal.goal.pose.orientation.x, goal.goal.pose.orientation.y, goal.goal.pose.orientation.z, goal.goal.pose.orientation.w,
+        goal.start.pose.position.x, goal.start.pose.position.y, goal.start.pose.position.z,
+        goal.start.pose.orientation.x, goal.start.pose.orientation.y, goal.start.pose.orientation.z, goal.start.pose.orientation.w);
+
+      RCLCPP_INFO(get_logger(), "START: Pose(position=Point(x=%.4f, y=%.4f, z=%.4f), orientation=Quaternion(x=%.4f, y=%.4f, z=%.4f, w=%.4f))",
+        goal.start.pose.position.x, goal.start.pose.position.y, goal.start.pose.position.z,
+        goal.start.pose.orientation.x, goal.start.pose.orientation.y, goal.start.pose.orientation.z, goal.start.pose.orientation.w);
+
+      RCLCPP_INFO(get_logger(), "GOAL: Pose(position=Point(x=%.4f, y=%.4f, z=%.4f), orientation=Quaternion(x=%.4f, y=%.4f, z=%.4f, w=%.4f))",
+        goal.goal.pose.position.x, goal.goal.pose.position.y, goal.goal.pose.position.z,
+        goal.goal.pose.orientation.x, goal.goal.pose.orientation.y, goal.goal.pose.orientation.z, goal.goal.pose.orientation.w);
+
       action_client_->async_send_goal(goal);
       start_filled = false;
     }

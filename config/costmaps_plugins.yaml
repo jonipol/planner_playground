@@ -1,8 +1,7 @@
 /**: # in all namespaces, all nodes
     ros__parameters:
-      footprint: "[ [0.725, 0.525], [0.725, -0.525], [-0.725, -0.525], [-0.725, 0.525] ]"
-      # robot_radius: 0.525
-      footprint_padding: 0.12
+      footprint: '[[2.33895978415641, 0.0], [2.109999923706055, 0.64], [1.6649999737739563, 0.899500024318695], [-0.33500005006790157, 0.899500024318695], [-0.33500005006790157, -0.899500024318695], [1.6649999737739563, -0.899500024318695], [2.109999923706055, -0.64]]'
+      # footprint: '[[0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5]]'
 
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
@@ -11,5 +10,5 @@
 
       inflation_layer_global:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.7
-        inflation_radius: 3.0
+        cost_scaling_factor: 0.55
+        inflation_radius: 4.0

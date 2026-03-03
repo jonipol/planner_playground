@@ -5,4 +5,8 @@ smoother_server:
       plugin: "nav2_smoother::SimpleSmoother"
       tolerance: 1.0e-10
       max_its: 1000
+      w_data: 0.2
+      w_smooth: 0.3
       do_refinement: True
+      refinement_num: 2
+      enforce_path_inversion: true
