@@ -11,11 +11,18 @@ class SimpleNode(Node):
     super().__init__('path_and_check')
     start = PoseStamped()
     start.header.frame_id = 'map'
-    start.pose = Pose(position=Point(x=1.9678, y=-0.0649, z=0.0000), orientation=Quaternion(x=0.0000, y=0.0000, z=0.2154, w=0.9765))
 
     goal = PoseStamped()
     goal.header.frame_id = 'map'
-    goal.pose = Pose(position=Point(x=-0.5405, y=4.2112, z=0.0000), orientation=Quaternion(x=0.0000, y=0.0000, z=0.1885, w=0.9821))
+    
+    # Longer path, slightly clipping towards the end
+    # start.pose = Pose(position=Point(x=1.9678, y=-0.0649, z=0.0000), orientation=Quaternion(x=0.0000, y=0.0000, z=0.2154, w=0.9765))
+    # goal.pose = Pose(position=Point(x=-0.5405, y=4.2112, z=0.0000), orientation=Quaternion(x=0.0000, y=0.0000, z=0.1885, w=0.9821))
+    
+    # Tiny move, very invalid
+    start.pose = Pose(position=Point(x=2.5007, y=1.0792, z=0.0000), orientation=Quaternion(x=0.0000, y=0.0000, z=0.4328, w=0.9015))
+    goal.pose = Pose(position=Point(x=2.7434, y=1.0518, z=0.0000), orientation=Quaternion(x=0.0000, y=0.0000, z=0.2210, w=0.9753))
+
     action_req = ComputePathToPose.Goal()
     action_req.start = start
     action_req.goal = goal
